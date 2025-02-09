@@ -1,0 +1,111 @@
+-- Module: UILibrary
+local UILibrary = {}
+
+-- Fonction pour créer une fenêtre principale
+function UILibrary.CreateMainWindow(title, size, position)
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+    local mainFrame = Instance.new("Frame")
+    mainFrame.Name = "MainFrame"
+    mainFrame.Parent = screenGui
+    mainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    mainFrame.BorderSizePixel = 0
+    mainFrame.Position = position or UDim2.new(0.1, 0, 0.1, 0)
+    mainFrame.Size = size or UDim2.new(0, 670, 0, 494)
+
+    local titleLabel = Instance.new("TextLabel")
+    titleLabel.Parent = mainFrame
+    titleLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    titleLabel.BorderSizePixel = 0
+    titleLabel.Size = UDim2.new(0, 670, 0, 20)
+    titleLabel.Font = Enum.Font.SourceSansBold
+    titleLabel.Text = title or "UI Library"
+    titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    titleLabel.TextSize = 14
+    titleLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+    return mainFrame
+end
+
+-- Fonction pour créer un onglet
+function UILibrary.CreateTab(parent, name, position, size)
+    local tabButton = Instance.new("TextButton")
+    tabButton.Name = name
+    tabButton.Parent = parent
+    tabButton.BackgroundColor3 = Color3.fromRGB(221, 221, 221)
+    tabButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    tabButton.Position = position or UDim2.new(0.1, 0, 0.1, 0)
+    tabButton.Size = size or UDim2.new(0, 146, 0, 34)
+    tabButton.Font = Enum.Font.SourceSans
+    tabButton.Text = name
+    tabButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+    tabButton.TextSize = 14
+
+    return tabButton
+end
+
+-- Fonction pour créer une checkbox
+function UILibrary.CreateCheckbox(parent, name, position, size)
+    local checkbox = Instance.new("TextButton")
+    checkbox.Name = name
+    checkbox.Parent = parent
+    checkbox.BackgroundColor3 = Color3.fromRGB(221, 221, 221)
+    checkbox.BorderColor3 = Color3.fromRGB(221, 221, 221)
+    checkbox.BorderSizePixel = 5
+    checkbox.Position = position or UDim2.new(0.1, 0, 0.1, 0)
+    checkbox.Size = size or UDim2.new(0, 10, 0, 10)
+    checkbox.Font = Enum.Font.SourceSans
+    checkbox.Text = ""
+    checkbox.TextColor3 = Color3.fromRGB(0, 0, 0)
+    checkbox.TextSize = 14
+
+    return checkbox
+end
+
+-- Fonction pour créer un slider
+function UILibrary.CreateSlider(parent, name, position, size)
+    local sliderFrame = Instance.new("Frame")
+    sliderFrame.Name = name
+    sliderFrame.Parent = parent
+    sliderFrame.BackgroundColor3 = Color3.fromRGB(221, 221, 221)
+    sliderFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    sliderFrame.BorderSizePixel = 0
+    sliderFrame.Position = position or UDim2.new(0.1, 0, 0.1, 0)
+    sliderFrame.Size = size or UDim2.new(0, 153, 0, 3)
+
+    local sliderButton = Instance.new("TextButton")
+    sliderButton.Name = "SliderButton"
+    sliderButton.Parent = sliderFrame
+    sliderButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    sliderButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    sliderButton.BorderSizePixel = 0
+    sliderButton.Position = UDim2.new(0.5, 0, -3, 0)
+    sliderButton.Size = UDim2.new(0, 6, 0, 20)
+    sliderButton.Font = Enum.Font.SourceSans
+    sliderButton.Text = ""
+    sliderButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+    sliderButton.TextSize = 14
+
+    return sliderFrame, sliderButton
+end
+
+-- Fonction pour créer un bouton de sélection de touche
+function UILibrary.CreateKeySelector(parent, name, position, size)
+    local keyButton = Instance.new("TextButton")
+    keyButton.Name = name
+    keyButton.Parent = parent
+    keyButton.BackgroundColor3 = Color3.fromRGB(221, 221, 221)
+    keyButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    keyButton.Position = position or UDim2.new(0.1, 0, 0.1, 0)
+    keyButton.Size = size or UDim2.new(0, 214, 0, 41)
+    keyButton.Font = Enum.Font.SourceSans
+    keyButton.Text = "Click to Bind"
+    keyButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+    keyButton.TextSize = 14
+
+    return keyButton
+end
+
+return UILibrary
